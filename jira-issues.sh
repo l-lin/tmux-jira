@@ -28,6 +28,7 @@ fi
 
 cat "${cache_file}" \
   | fzf \
+    --query "${1:-}" \
     --no-reverse \
     --header-lines 1 \
     --preview-window 'top:70%:border-bottom:hidden' \

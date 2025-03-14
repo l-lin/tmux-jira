@@ -1,6 +1,6 @@
 # tmux-jira
 
-> Calling [jira](https://github.com/ankitpokhrel/jira-cli) issues interactively with [tmux](https://github.com/tmux/tmux).
+> Calling [jira](https://github.com/ankitpokhrel/jira-cli) issues interactively with [tmux](https://github.com/tmux/tmux) and [fzf](https://github.com/junegunn/fzf).
 
 ## :package: Installation
 ### Install through [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
@@ -25,6 +25,7 @@ Default configuration:
 set -g @tmux-jira-key-binding 'C-j'
 set -g @tmux-jira-width '90%'
 set -g @tmux-jira-height '90%'
+set -g @tmux-jira-query 'Foobar'
 ```
 
 ## :page_with_curl: License

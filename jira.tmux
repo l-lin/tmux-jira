@@ -6,6 +6,8 @@ width_option='@tmux-jira-width'
 width_option_default='90%'
 height_option='@tmux-jira-height'
 height_option_default='90%'
+query_option='@tmux-jira-query'
+query_option_default=''
 
 get_tmux_option() {
 	local option="${1}"
@@ -23,9 +25,10 @@ get_tmux_option() {
 key_binding=$(get_tmux_option "${key_binding_option}" "${key_binding_option_default}")
 width=$(get_tmux_option "${width_option}" "${width_option_default}")
 height=$(get_tmux_option "${height_option}" "${height_option_default}")
+query=$(get_tmux_option "${query_option}" "${query_option_default}")
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 tmux bind-key "${key_binding}" \
   popup -w "${width}" -h "${height}" -E \
-  "${script_dir}/jira-issues.sh 2> /tmp/jira.log"
+  "${script_dir}/jira-issues.sh '${query}' 2> /tmp/jira.log"
