@@ -26,6 +26,7 @@ set -g @tmux-jira-key-binding 'C-j'
 set -g @tmux-jira-width '90%'
 set -g @tmux-jira-height '90%'
 set -g @tmux-jira-query 'Foobar'
+set -g @tmux-jira-copy-cmd 'pbcopy'
 ```
 
 ## :page_with_curl: License

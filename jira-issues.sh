@@ -11,6 +11,9 @@ if ! type fzf >/dev/null 2>&1; then
   return
 fi
 
+query=${1:-}
+copy_cmd=${2:-pbcopy}
+
 # Use a cache, because jira is slow.
 # You can always call <C-r> to reload the content.
 cache_dir="${XDG_CACHE_HOME:-${HOME}/.cache}/tmux-jira/"
@@ -28,7 +31,7 @@ fi
 
 cat "${cache_file}" \
   | fzf \
-    --query "${1:-}" \
+    --query "${query}" \
     --no-reverse \
     --header-lines 1 \
     --preview-window 'top:70%:border-bottom:hidden' \
@@ -42,6 +45,6 @@ cat "${cache_file}" \
     --bind 'ctrl-b:execute(jira open {1})' \
     --bind "ctrl-r:reload(${reload_cmd})" \
     --bind "alt-u:execute(jira issue assign {1} x)+reload(${reload_cmd})" \
-    --bind 'ctrl-y:execute-silent(echo -n {1} | xsel -b)' \
+    --bind "ctrl-y:execute-silent(echo -n {1} | ${copy_cmd})" \
     --bind "enter:execute(jira issue view {1})" \
     --header 'A-a: assign to me | A-c: add comment | A-e: edit | A-m: move | C-b: open | C-r: reload | A-u: unassign | C-y: yank id | ?: toggle preview'
