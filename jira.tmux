@@ -36,5 +36,5 @@ copy_cmd=$(get_tmux_option "${copy_cmd_option}" "${copy_cmd_option_default}")
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 tmux bind-key "${key_binding}" \
-  popup -w "${width}" -h "${height}" \
+  popup -w "${width}" -h "${height}" -E \
   "${script_dir}/jira-issues.sh '${query}' '${before_query}' '${copy_cmd}' 2> /tmp/jira.log"
