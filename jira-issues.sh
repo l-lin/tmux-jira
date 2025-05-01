@@ -12,7 +12,8 @@ if ! type fzf >/dev/null 2>&1; then
 fi
 
 query=${1:-}
-copy_cmd=${2:-pbcopy}
+before_query=${2:-}
+copy_cmd=${3:-pbcopy}
 
 # Use a cache, because jira is slow.
 # You can always call <C-r> to reload the content.
@@ -23,6 +24,10 @@ mkdir -p "${cache_dir}"
 
 jira_cmd='jira sprint list --current -s~done --order-by status --plain --columns id,assignee,status,summary'
 reload_cmd="${jira_cmd} | tee ${cache_file}"
+
+if [ "${before_query}" != '' ]; then
+  source "${before_query}"
+fi
 
 # 1st call to fetch JIRA issues.
 if [ ! -e "${cache_file}" ]; then
