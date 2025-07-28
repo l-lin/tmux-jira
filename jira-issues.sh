@@ -22,7 +22,7 @@ cache_file="${cache_dir}/jira.tmp"
 
 mkdir -p "${cache_dir}"
 
-jira_cmd='jira sprint list --current -s~done --order-by status --plain --columns id,assignee,status,summary'
+jira_cmd='jira sprint list --current -s~done -s~archive --order-by status --plain --columns id,assignee,status,summary'
 reload_cmd="${jira_cmd} | tee ${cache_file}"
 
 if [ "${before_query}" != '' ]; then
