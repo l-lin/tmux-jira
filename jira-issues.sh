@@ -48,7 +48,7 @@ cat "${cache_file}" \
     --bind "alt-e:execute(jira issue edit {1})+reload(${reload_cmd})" \
     --bind "alt-m:execute(jira issue move {1})+reload(${reload_cmd})" \
     --bind "alt-u:execute(jira issue assign {1} x)+reload(${reload_cmd})" \
-    --bind "alt-y:execute-silent(echo -n {1} | ${copy_cmd})" \
+    --bind "alt-y:execute-silent(echo -n {1} | ${copy_cmd})+abort" \
     --bind "ctrl-r:reload(${reload_cmd})" \
     --bind "enter:execute(jira open {1})" \
     --header 'A-a: assign to me | A-c: add comment | A-e: edit | A-m: move | A-u: unassign | A-y: yank id | C-r: reload | Enter: open | ?: toggle preview'
